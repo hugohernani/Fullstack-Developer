@@ -10,6 +10,7 @@ AllCops:
     - '**/templates/**/*'
     - '**/vendor/**/*'
     - '**/node_modules/**/*'
+    - '**/app/views/**/*'
     - '.pryrc'
   RSpec:
     Patterns:
