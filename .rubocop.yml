@@ -1,0 +1,29 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 3.0
+  Exclude:
+    - '**/bin/**/*'
+    - '**/tmp/**/*'
+    - '**/templates/**/*'
+    - '**/vendor/**/*'
+    - '**/node_modules/**/*'
+    - '.pryrc'
+  RSpec:
+    Patterns:
+    - '_spec.rb$'
+
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Rails/FilePath:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false

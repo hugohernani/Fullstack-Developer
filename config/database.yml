@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: <%= ENV['POSTGRESQL_ADDRESS'] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV["POSTGRESQL_USERNAME"] %>
+  password: <%= ENV["POSTGRESQL_PASSWORD"] %>
+
+development:
+  <<: *default
+  database: umanni_fullstack_developer_development
+
+test:
+  <<: *default
+  database: umanni_fullstack_developer_test
+
+production:
+  <<: *default
+  database: umanni_fullstack_developer_production
+  username: umanni_fullstack_developer
+  password: <%= ENV['FULLSTACK_DEVELOPER_DATABASE_PASSWORD'] %>
