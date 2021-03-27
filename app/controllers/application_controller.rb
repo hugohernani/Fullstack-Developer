@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :protect_from_forgerry, with: :exception
-  before_action :store_location!, if: :should_be_stored?
+  protect_from_forgery with: :exception
 
   protected
 
