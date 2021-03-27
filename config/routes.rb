@@ -9,4 +9,12 @@ Rails.application.routes.draw do
       root to: 'devise/sessions#new'
     end
   end
+
+  authenticated :user do
+    root 'profiles#index', as: :authenticated_user
+  end
+
+  Pathname.new(Rails.root.join('config/routes/')).each_child do |route|
+    instance_eval File.read route
+  end
 end
