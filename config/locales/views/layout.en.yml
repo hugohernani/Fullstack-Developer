@@ -3,3 +3,5 @@ en:
     dashboard: Dashboard
     users: Users
     logout: Logout
+  breadcrumbs:
+    users: Users
