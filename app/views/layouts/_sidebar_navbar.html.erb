@@ -1,0 +1,39 @@
+<aside class="col-12 col-sm-2 p-0 bg-dark flex-shrink-1">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark align-items-start flex-sm-column flex-row">
+    <%= link_to profile_path, class: 'navbar-brand' do %>
+      <i class="fa fa-id-badge fa-fw"></i> <%= current_user %>
+    <% end %>
+    <a href class="navbar-toggler" data-toggle="collapse" data-target=".sidebar">
+      <span class="navbar-toggler-icon"></span>
+    </a>
+    <div class="collapse navbar-collapse sidebar">
+      <ul class="flex-column navbar-nav w-100 justify-content-between">
+        <li class="nav-item">
+          <%= link_to admin_dashboard_path, class: "nav-link pl-0" do %>
+            <i class="fa fa-tachometer fa-fw"></i>
+            <span><%= t('sidebar.dashboard') %></span>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admin_users_path, class: "nav-link pl-0" do %>
+            <i class="fa fa-users fa-fw"></i>
+            <span><%= t('sidebar.users') %></span>
+          <% end %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to profile_path, class: "nav-link pl-0" do %>
+            <i class="fa fa-id-badge fa-fw"></i>
+            <span><%= t('sidebar.users') %></span>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to logout_path, method: :delete, id: dom_id(current_user, :logout), class: "nav-link pl-0" do %>
+            <i class="fa fa-sign-out fa-fw"></i>
+            <span><%= t('sidebar.logout') %></span>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</aside>

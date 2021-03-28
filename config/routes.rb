@@ -4,6 +4,12 @@ Rails.application.routes.draw do
     sign_out: 'logout'
   }
 
+  as :user do
+    get 'login', to: 'devise/sessions#new'
+    post 'login', to: 'devise/sessions#create'
+    delete 'logout', to: 'devise/sessions#destroy'
+  end
+
   unauthenticated do
     devise_scope :user do
       root to: 'devise/sessions#new'
