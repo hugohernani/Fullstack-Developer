@@ -10,7 +10,7 @@
       <ul class="flex-column navbar-nav w-100 justify-content-between">
         <li class="nav-item">
           <%= link_to admin_dashboard_path, class: "nav-link pl-0" do %>
-            <i class="fa fa-tachometer fa-fw"></i>
+            <i class="fa fa-tachometer-alt fa-fw"></i>
             <span><%= t('sidebar.dashboard') %></span>
           <% end %>
         </li>
@@ -29,7 +29,7 @@
         </li>
         <li class="nav-item">
           <%= link_to logout_path, method: :delete, id: dom_id(current_user, :logout), class: "nav-link pl-0" do %>
-            <i class="fa fa-sign-out fa-fw"></i>
+            <i class="fa fa-sign-out-alt fa-fw"></i>
             <span><%= t('sidebar.logout') %></span>
           <% end %>
         </li>
