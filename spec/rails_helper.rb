@@ -30,5 +30,6 @@ RSpec.configure do |config|
 
   config.include FactoryBot::Syntax::Methods
   config.include ActionCable::TestHelper
+  config.include Rails.application.routes.url_helpers, type: :presenter
   config.example_status_persistence_file_path = "#{::Rails.root}/status_persistence_file.txt"
 end
