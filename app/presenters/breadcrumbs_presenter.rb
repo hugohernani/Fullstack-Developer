@@ -18,7 +18,7 @@ class BreadcrumbsPresenter < BasePresenter
     <<~HTML
       <nav aria-label="breadcrumb #{css_classes}" class="main-breadcrumb">
         <ol class="breadcrumb">
-          #{@breadcrumbs.map(&:render).join}
+          #{render_breadcrumbs}
         </ol>
       </nav>
     HTML
@@ -36,5 +36,12 @@ class BreadcrumbsPresenter < BasePresenter
       },
       view_context: view_context
     )
+  end
+
+  def render_breadcrumbs
+    @breadcrumbs.map do |breadcrumb|
+      breadcrumb.path = '' if breadcrumb.css_classes.include?('active')
+      breadcrumb.render
+    end.join
   end
 end

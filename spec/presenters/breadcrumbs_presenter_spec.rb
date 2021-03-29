@@ -16,7 +16,9 @@ describe BreadcrumbsPresenter do
       }
     end
 
-    let(:mocked_breadcrumb_item_presenter) { instance_double(BreadcrumbItemPresenter, render: '<li></li>') }
+    let(:mocked_breadcrumb_item_presenter) do
+      instance_double(BreadcrumbItemPresenter, render: '<li></li>', css_classes: '')
+    end
 
     before do
       allow(BreadcrumbItemPresenter).to receive(:new).and_return(mocked_breadcrumb_item_presenter)

@@ -24,7 +24,7 @@
             <div class='col-sm-5'>
               <div class='custom-control custom-switch  role-switcher'>
                 <%= check_box "user", "role", { class: "custom-control-input", checked: @user.admin?, id: dom_id(@user, 'switcher') } %>
-                <%= label_tag dom_id(@user, 'switcher'), @user.role, class: 'custom-control-label' %>
+                <%= label_tag dom_id(@user, 'switcher'), @user.role.titleize, class: 'custom-control-label' %>
               </div>
             </div>
           </div>
@@ -42,8 +42,8 @@
 
   <div class='row'>
     <div class='actions col-md-8 offset-md-4'>
-      <div class='card-footer d-flex justify-content-md-center mx-md-auto mt-2 w-50'>
-        <%= link_to t('helpers.links.edit'), edit_admin_user_path(@user), id: dom_id(@user), class: "card-link btn btn-primary" %>
+      <div class='card-footer d-flex justify-content-md-center mx-md-auto mt-2 w-100'>
+        <%= link_to t('helpers.links.edit'), edit_admin_user_path(@user), id: dom_id(@user, :edit), class: "card-link btn btn-info" %>
         <%= link_to t('helpers.links.delete'), admin_user_path(@user), method: :delete, id: dom_id(@user, :delete),
             data: { confirm: 'WARNING! Are you sure that you want to delete?' }, class: "card-link btn btn-danger" %>
       </div>
