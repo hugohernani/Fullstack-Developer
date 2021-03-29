@@ -8,6 +8,8 @@ Bundler.require(*Rails.groups)
 
 module FullstackDeveloper
   class Application < Rails::Application
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 

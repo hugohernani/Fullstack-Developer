@@ -1,0 +1,10 @@
+en:
+  helpers:
+    buttons:
+      save: Save
+    links:
+      logout: Logout
+      show: Show
+      edit: Edit
+      back: Back
+      delete: Delete

@@ -1,0 +1,13 @@
+<div class='page-header'>
+  <h1 class="text-center"><%= t('.title') %></h1>
+</div>
+
+<div class='row'>
+  <% @users.each_slice(2) do |user_slice| %>
+    <% user_slice.each do |user| %>
+      <div class='col-sm-6'>
+        <%= render user %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
