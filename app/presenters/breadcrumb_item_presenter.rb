@@ -4,7 +4,7 @@ class BreadcrumbItemPresenter < BasePresenter
   attr_accessor :path, :css_classes
 
   def initialize(breadcrumb_options, view_context:)
-    super()
+    super(breadcrumb_options)
     validate_required_breadcrumbs!(breadcrumb_options, required_attrs: %i[path title])
     @path         = breadcrumb_options.fetch(:path)
     @title        = breadcrumb_options.fetch(:title)
