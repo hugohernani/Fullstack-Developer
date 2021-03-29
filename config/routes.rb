@@ -1,3 +1,7 @@
+Dir.glob(Rails.root.join('config/route_concerns/**.rb')).each do |route_concern|
+  require route_concern
+end
+
 Rails.application.routes.draw do
   devise_for :users, path: '', path_names: {
     sign_in: 'login',
@@ -17,10 +21,11 @@ Rails.application.routes.draw do
   end
 
   authenticated :user do
-    root 'profiles#index', as: :authenticated_user
+    root 'profiles#show', as: :authenticated_user
   end
 
-  Pathname.new(Rails.root.join('config/routes/')).each_child do |route|
-    instance_eval File.read route
+  instance_eval File.read Rails.root.join('config/routes/common_concerns.rb')
+  Dir.glob(Rails.root.join('config/routes/*_routes.rb')).each do |route_path|
+    instance_eval File.read route_path
   end
 end
