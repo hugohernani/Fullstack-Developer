@@ -9,4 +9,9 @@ class User < ApplicationRecord
   def to_s
     full_name
   end
+
+  def toggle_role
+    new_role = admin? ? User.roles[:member] : User.roles[:admin]
+    update(role: new_role)
+  end
 end
