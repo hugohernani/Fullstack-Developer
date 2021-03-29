@@ -29,5 +29,6 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
 
   config.include FactoryBot::Syntax::Methods
+  config.include ActionCable::TestHelper
   config.example_status_persistence_file_path = "#{::Rails.root}/status_persistence_file.txt"
 end

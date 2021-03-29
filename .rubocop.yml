@@ -36,3 +36,6 @@ Style/Documentation:
 Metrics/MethodLength:
   Exclude:
     - '**/db/migrate/*'
+
+RSpec/DescribedClass:
+  Enabled: false
