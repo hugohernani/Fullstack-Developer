@@ -9,7 +9,7 @@
 
 <div class="form-check row d-flex ml-3">
   <%= f.label :role, 'Admin', class: 'col-sm-1 form-check-label' %>
-  <%= f.check_box :role, {class: 'form-check-input', checked: @user.admin?}, User.roles[:admin], User.roles[:no_admin] %>
+  <%= f.check_box :role, {class: 'form-check-input', checked: @user.admin?}, User.roles[:admin], User.roles[:member] %>
 </div>
 
 <div class="form-group row">

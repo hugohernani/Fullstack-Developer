@@ -4,6 +4,6 @@ User.find_or_create_by(full_name: 'Admin Fullstack Web Developer', email: 'admin
 end
 
 User.find_or_create_by(full_name: 'Fullstack Web Developer', email: 'user@localhost.com',
-                       role: User.roles[:no_admin]) do |account|
+                       role: User.roles[:member]) do |account|
   account.password = account.password_confirmation = ENV['DEV_PASSWORD'] || '12341234'
 end

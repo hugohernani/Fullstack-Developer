@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   validates :email, :full_name, :role, presence: true
 
-  enum role: { no_admin: 0, admin: 1 }
+  enum role: { member: 0, admin: 1 }
 
   def to_s
     full_name

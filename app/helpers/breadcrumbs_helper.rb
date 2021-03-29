@@ -3,7 +3,7 @@ module BreadcrumbsHelper
     ctrl_scope                     = request.path[1..].split('/') # i.e ['admin', 'users', '1', 'edit']
     scoped_root_path, scoped_title = root_path_title(ctrl_scope.shift)
     breadcrumbs                    = add_root_breadcrumb(scoped_root_path, scoped_title)
-    add_remaining_breadcrumbs(breadcrumbs, ctrl_scope)
+    add_remaining_breadcrumbs(breadcrumbs, ctrl_scope) if ctrl_scope.length > 0
     breadcrumbs.render
   end
 
