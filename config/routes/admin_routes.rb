@@ -1,7 +1,11 @@
-namespace :admin do
-  root to: 'dashboards#index'
+scope path: 'admin', as: :admin do
+  concerns :profile_section
 
-  get '/dashboard', to: 'dashboards#index'
+  scope module: :admin do
+    root to: 'dashboards#index'
 
-  resources :users
+    get '/dashboard', to: 'dashboards#index'
+
+    resources :users
+  end
 end

@@ -11,10 +11,14 @@
   </head>
 
   <body>
-    <div class="flash-container">
-      <%= render 'flash_messages'%>
+    <div class='container-fluid'>
+      <main class="col bg-faded py-3">
+        <%= render 'layouts/breadcrumb' %>
+        <div class="flash-container">
+          <%= render 'flash_messages'%>
+        </div>
+        <%= yield %>
+      </main>      
     </div>
-
-    <div class='container'><%= yield %></div>
   </body>
 </html>

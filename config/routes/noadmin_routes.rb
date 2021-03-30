@@ -1,1 +1,3 @@
-get '/profile', to: 'profiles#index'
+scope path: '' do
+  concerns :profile_section
+end

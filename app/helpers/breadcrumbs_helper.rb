@@ -1,9 +1,9 @@
 module BreadcrumbsHelper
   def render_breadcrumbs
     ctrl_scope                     = request.path[1..].split('/') # i.e ['admin', 'users', '1', 'edit']
-    scoped_root_path, scoped_title = root_path_title(ctrl_scope.shift)
+    scoped_root_path, scoped_title = root_path_title(ctrl_scope.shift) # i.e. [admin Admin]
     breadcrumbs                    = add_root_breadcrumb(scoped_root_path, scoped_title)
-    add_remaining_breadcrumbs(breadcrumbs, ctrl_scope) if ctrl_scope.length > 0
+    add_remaining_breadcrumbs(breadcrumbs, ctrl_scope) if ctrl_scope.length.positive?
     breadcrumbs.render
   end
 
@@ -27,9 +27,8 @@ module BreadcrumbsHelper
   end
 
   def add_breadcrumb(breadcrumbs, current_path, css_classes = '')
-    current_action = current_path.match(/\d+/) && action_name == 'edit' ? :show : nil
     breadcrumbs.add_breadcrumb(
-      path: url_for(controller: controller_path, action: current_action),
+      path: url_for(controller: controller_path, action: matching_action(current_path)),
       title: path_title(current_path),
       css_classes: css_classes
     )
@@ -43,7 +42,12 @@ module BreadcrumbsHelper
 
   def root_path_title(first_path)
     {
-      'admin': %w[admin Admin]
+      'admin': %w[admin Admin],
+      'profile': %w[profile Profile]
     }.with_indifferent_access.fetch(first_path, ['', 'Home'])
+  end
+
+  def matching_action(current_path)
+    return :show if current_path.match(/\d+|profile|edit/) && action_name.presence_in(%w[show edit])
   end
 end

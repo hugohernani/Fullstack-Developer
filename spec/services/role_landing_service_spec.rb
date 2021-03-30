@@ -16,7 +16,7 @@ describe RoleLandingService do
   end
 
   context 'when resource is user' do
-    let(:resource) { instance_double(User, role: 'noadmin') }
+    let(:resource) { instance_double(User, role: 'member') }
 
     it 'expects to return user profile path' do
       expect(service.perform).to eq(context.profile_path)

@@ -2,7 +2,7 @@ class BreadcrumbsPresenter < BasePresenter
   include BreadcrumbsValidatable
 
   def initialize(breadcrumbs_options, view_context:)
-    super()
+    super(breadcrumbs_options)
     validate_required_breadcrumbs!(breadcrumbs_options, required_attrs: %i[root_path root_title])
 
     @view_context = view_context
@@ -40,7 +40,7 @@ class BreadcrumbsPresenter < BasePresenter
 
   def render_breadcrumbs
     @breadcrumbs.map do |breadcrumb|
-      breadcrumb.path = '' if breadcrumb.css_classes.include?('active')
+      breadcrumb.path = '' if breadcrumb.css_classes.include?('active') || @breadcrumbs.length == 1
       breadcrumb.render
     end.join
   end

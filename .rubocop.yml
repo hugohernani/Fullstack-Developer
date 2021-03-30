@@ -39,3 +39,15 @@ Metrics/MethodLength:
 
 RSpec/DescribedClass:
   Enabled: false
+
+Layout/SpaceBeforeBlockBraces:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+RSpec/InstanceVariable:
+  Enabled: false

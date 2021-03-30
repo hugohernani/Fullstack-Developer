@@ -1,0 +1,4 @@
+en:
+  profiles:
+    update:
+      success: Profile was successfully updated

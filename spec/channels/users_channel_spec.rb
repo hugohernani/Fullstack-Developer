@@ -8,7 +8,7 @@ RSpec.describe UsersChannel do
   end
 
   describe '#toggle_user_role' do
-    let(:member_user) { instance_double('User', toggle_role!: nil, id: 42) }
+    let(:member_user) { instance_double('User', toggle_role: nil, id: 42) }
 
     before do
       mock_general_user_unrelated_comm(member_user)
