@@ -17,7 +17,7 @@ module Admin
     end
 
     def create
-      @user = User.new(user_params)
+      @user = User.new(create_user_params)
       if @user.save
         redirect_to(admin_users_path, notice: t('.success'))
       else
@@ -40,8 +40,12 @@ module Admin
 
     private
 
+    def create_user_params
+      params.require(:user).permit(:email, :full_name, :role, :password)
+    end
+
     def user_params
-      params.require(:user).permit(:full_name)
+      params.require(:user).permit(:full_name, :role)
     end
 
     def user
