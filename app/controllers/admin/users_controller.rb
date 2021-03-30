@@ -1,5 +1,7 @@
 module Admin
   class UsersController < BaseController
+    define_action_breadcrumb_for('Users', '/admin/users')
+
     def index
       @users = User.all
     end
@@ -18,18 +20,22 @@ module Admin
 
     def create
       @user = User.new(create_user_params)
-      if @user.save
-        redirect_to(admin_users_path, notice: t('.success'))
-      else
-        render :new
+      respond_to do |format|
+        if @user.save
+          format.html{ redirect_to(admin_users_path, notice: t('.success')) }
+        else
+          format.html{ render :new, status: :unprocessable_entity }
+        end
       end
     end
 
     def update
-      if user.update(user_params)
-        redirect_to(admin_user_path(user), notice: t('.success'))
-      else
-        render :new
+      respond_to do |format|
+        if user.update(user_params)
+          format.html{ redirect_to(admin_user_path(user), notice: t('.success')) }
+        else
+          format.html{ render :new, status: :unprocessable_entity }
+        end
       end
     end
 

@@ -1,7 +1,9 @@
 class ProfilesController < ApplicationController
-  before_action :authenticate_user!
-
   layout :role_based_layout
+
+  before_action :authenticate_user!
+  add_breadcrumb('Home', '/', root: true)
+  add_breadcrumb('Profile', "/#{controller_path}")
 
   def show
     decorated_user
@@ -16,6 +18,7 @@ class ProfilesController < ApplicationController
       if user.update(profile_params)
         format.html { redirect_to decorated_user.return_link, notice: t('.success') }
       else
+        decorated_user
         format.html { render :edit, status: :unprocessable_entity }
       end
     end

@@ -39,8 +39,8 @@ class BreadcrumbsPresenter < BasePresenter
   end
 
   def render_breadcrumbs
-    @breadcrumbs.map do |breadcrumb|
-      breadcrumb.path = '' if breadcrumb.css_classes.include?('active') || @breadcrumbs.length == 1
+    @breadcrumbs.each_with_index.map do |breadcrumb, index|
+      breadcrumb.path = '' if index == @breadcrumbs.length - 1
       breadcrumb.render
     end.join
   end
