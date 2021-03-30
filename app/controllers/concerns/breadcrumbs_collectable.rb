@@ -1,4 +1,11 @@
-module Breadcrumbs
+class MissingRootBreadcrumbException < RuntimeError
+  def initialize(msg = 'Missing root breadcrumb', exception_type = self.class)
+    @exception_type = exception_type
+    super(msg)
+  end
+end
+
+module BreadcrumbsCollectable
   extend ActiveSupport::Concern
 
   included do |_base|
@@ -20,6 +27,8 @@ module Breadcrumbs
   end
 
   def add_breadcrumb(title, path = '', opts = {})
+    raise MissingRootBreadcrumbException unless @breadcrumbs_collection.is_a?(BreadcrumbsPresenter)
+
     css_classes = opts.delete(:css_classes) || ''
     @breadcrumbs_collection.add_breadcrumb(
       path: path,
@@ -30,6 +39,10 @@ module Breadcrumbs
 
   def breadcrumbs_collection
     @breadcrumbs_collection ||= OpenStruct.new(render: '')
+  end
+
+  def missing_root_breadcrump?
+    breadcrumbs_collection.is_a?(BreadcrumbsPresenter)
   end
 
   module ClassMethods
