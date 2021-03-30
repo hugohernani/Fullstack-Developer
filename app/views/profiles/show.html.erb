@@ -1,0 +1,47 @@
+<div class='jumbotron'>
+  <div class='row justify-content-md-center'>
+    <div class='col-md-4 mb-md-2'>
+      <div class="card text-center">
+        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2021/03/18/19/56/keyboard-6105750_960_720.jpg" alt="Keyboard">
+        <%= link_to '', class: 'btn btn-primary change-image-btn' do %>
+          <span>Change image</span>
+        <% end %>
+      </div>
+    </div>
+
+    <div class='col-md-8'>
+      <div class='card border-info h-100'>
+        <div class='card-header'>
+          <%= @user.full_name %>
+        </div>
+        <div class="card-body">
+          <div class='field row card-title'>
+            <div class='col-sm-3'><%= art('user.email') %></div>
+            <div class='col-sm-5'><%= @user.email %></div>
+          </div>
+          <div class='field row card-title'>
+            <div class='col-sm-3'><%= art('user.role') %></div>
+            <div class='col-sm-5'>
+              <%= @user.role.titleize %>
+            </div>
+          </div>
+          <div class='field row card-title'>
+            <div class='col-sm-3'><%= art('user.created_at') %></div>
+            <div class='col-sm-5'><%= l(@user.created_at, format: :short) %></div>
+          </div>
+        </div>
+        <div class='card-footer'>
+          <%= l(@user.updated_at, format: :last_timestamp) %>
+        </div>
+      </div>
+      </div>
+  </div>
+
+  <div class='row'>
+    <div class='actions col-md-8 offset-md-4'>
+      <div class='card-footer d-flex justify-content-md-center mx-md-auto mt-2 w-100'>
+        <%= link_to t('helpers.links.edit'), @user.edit_link, id: dom_id(@user, :edit_profile), class: "card-link btn btn-info" %>
+      </div>
+    </div>
+  </div>
+</div>

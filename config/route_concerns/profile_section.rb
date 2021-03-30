@@ -6,7 +6,8 @@ module RouteConcerns
 
     def call(mapper, _options = {})
       mapper.get 'profile', controller: 'profiles', action: 'show', as: :profile
-      mapper.put 'profile', controller: 'profiles', action: 'update', as: :update_profile
+      mapper.get 'profile/edit', controller: 'profiles', action: 'edit', as: :edit_profile
+      mapper.match 'profile', controller: 'profiles', action: 'update', via: %w[patch put], as: :update_profile
     end
 
     private

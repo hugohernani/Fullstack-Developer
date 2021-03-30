@@ -17,7 +17,7 @@ describe BreadcrumbsPresenter do
     end
 
     let(:mocked_breadcrumb_item_presenter) do
-      instance_double(BreadcrumbItemPresenter, render: '<li></li>', css_classes: '')
+      instance_double(BreadcrumbItemPresenter, render: '<li></li>', css_classes: '', 'path=': nil)
     end
 
     before do

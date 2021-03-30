@@ -1,0 +1,17 @@
+<%= render 'layouts/errors', resource: user %>
+
+<div class="form-group row">
+  <%= f.label :full_name, class: 'col-sm-1 control-label' %>
+  <div class="col-sm-7">
+    <%= f.text_field :full_name, class: 'form-control' %>
+  </div>
+</div>
+
+<div class="form-group row">
+  <div class="col-sm-8">
+    <div class='card-footer d-flex justify-content-md-center mx-md-auto mt-5 w-100'>
+      <%= f.submit t('helpers.buttons.save'), class: 'btn btn-primary' %>
+      <%= link_to t('helpers.links.back'), user.return_link, class: 'btn btn-default' %>
+    </div>
+  </div>
+</div>
