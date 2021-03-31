@@ -10,11 +10,7 @@
         <span class="dropzone-msg-desc text-sm"><%= t('.dropzone_upload_restrictions') %></span>
         </div>
       </div>
-      <% if f.object.avatar_image.attached? && f.object.avatar_image.representable? %>
-        <div class='avatar-container'>
-          <%= image_tag f.object.avatar_image.representation(resize_to_limit: [385, 230]) %>
-        </div>
-      <% end %>
+      <%= storage_presenter(f.object.avatar_image).render(resize: [385, 230]) %>
     </div>
   </div>
 
