@@ -6,6 +6,9 @@ class User < ApplicationRecord
 
   enum role: { member: 0, admin: 1 }
 
+  ## Associations
+  has_one_attached :avatar_image
+
   def to_s
     full_name
   end

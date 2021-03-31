@@ -47,11 +47,11 @@ module Admin
     private
 
     def create_user_params
-      params.require(:user).permit(:email, :full_name, :role, :password)
+      params.require(:user).permit(:email, :full_name, :avatar_image, :role, :password)
     end
 
     def user_params
-      params.require(:user).permit(:full_name, :role)
+      params.require(:user).permit(:full_name, :role, :avatar_image)
     end
 
     def user
