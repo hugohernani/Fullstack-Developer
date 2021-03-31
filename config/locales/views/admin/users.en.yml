@@ -5,6 +5,9 @@ en:
         title: Update
       new:
         title: New
+      form:
+        dropzone_upload_title: Drag here to upload or click here to browse
+        dropzone_upload_restrictions: 2 MB file size maximum. Allowed file types png, jpg.
       index:
         title: Users List
         new: New User
