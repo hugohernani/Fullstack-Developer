@@ -7,7 +7,10 @@ class User < ApplicationRecord
   enum role: { member: 0, admin: 1 }
 
   ## Associations
-  has_one_attached :avatar_image
+  has_one_attached :avatar_image do |attachable|
+    attachable.variant :thumb, resize: '100x100'
+    attachable.variant :medium, resize: '350x350'
+  end
 
   def to_s
     full_name

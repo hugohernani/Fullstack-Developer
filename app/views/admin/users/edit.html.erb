@@ -1,10 +1,14 @@
-<div class="card">
-  <div class="card-header">
-    <%= t('.title') %>
-  </div>
-  <div class="card-body">
-    <%= form_for [:admin, @user], html: { class: "form-horizontal" }, multipart: true do |f| %>
-      <%= render 'form', f: f %>
-    <% end %>
-  </div>
+<div class='jumbotron'>
+  <%= form_for [:admin, @user], html: { class: "form-horizontal" }, multipart: true do |f| %>
+    <%= render 'form', f: f %>
+
+    <div class='row'>
+      <div class='actions col-md-8 offset-md-4'>
+        <div class='card-footer d-flex justify-content-md-center mx-md-auto mt-2 w-100'>
+          <%= f.submit t('helpers.buttons.save'), class: 'card-link btn btn-info' %>
+          <%= link_to t('helpers.links.back'), admin_users_path, class: 'card-link btn btn-secondary' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
