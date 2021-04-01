@@ -31,6 +31,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise', '~> 4.7'
 gem 'faker', '~> 2.17'
 gem 'smart_init', '~> 5.0'
+gem "pundit", "~> 2.1"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
