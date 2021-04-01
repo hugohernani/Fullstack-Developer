@@ -7,10 +7,11 @@ module ApplicationHelper
     FactoryStoragePresenter.for(storage_model, view_context: self)
   end
 
-  def error_message_for(model, field)
+  def error_message_for(model, field, opts = {})
     return error_for(model, field) if model.errors.any?
 
-    new_instance = model.class.new
+    model_klass = opts.fetch(:model_klass, model.class)
+    new_instance = model_klass.new
     !new_instance.valid? && error_for(new_instance, field)
   end
 

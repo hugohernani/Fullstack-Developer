@@ -1,10 +1,28 @@
-<div class="card">
-  <div class="card-header">
-    <%= t('.title') %>
-  </div>
-  <div class="card-body">
-    <%= form_for @user, url: @user.update_link, html: { class: "form-horizontal" } do |f| %>
-      <%= render 'form', f: f, user: @user %>
-    <% end %>
-  </div>
+<div class='jumbotron'>
+  <%= form_for @user, url: @user.update_link, html: { class: "form-horizontal needs-validation", novalidate: true }, multipart: true do |f| %>
+    <div class='row justify-content-md-center'>
+      <%= render 'shared/image_form_field', f: f %>
+
+      <div class='col-md-8'>
+        <div class='card border-info h-100'>
+          <div class='card-header'></div>
+          <div class="card-body">
+            <%= render 'form', f: f %>
+          </div>
+          <div class='card-footer'>
+            <%= l(@user.updated_at, format: :last_timestamp) %>
+          </div>
+        </div>
+        </div>
+    </div>
+
+    <div class='row'>
+      <div class='actions col-md-8 offset-md-4'>
+        <div class='card-footer d-flex justify-content-md-center mx-md-auto mt-2 w-100'>
+          <%= f.submit t('helpers.buttons.save'), class: 'card-link btn btn-info' %>
+          <%= link_to t('helpers.links.back'), @user.return_link, class: 'card-link btn btn-secondary' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>

@@ -1,18 +1,22 @@
 $(document).ready(() => {
   let user_edit_regex = /.*users\/(\d*\/edit|new)/;
-  if(user_edit_regex.exec(window.location.pathname)){
+  let profile_edit_regex = /.*profile\/edit/;
+  let current_path = window.location.pathname;
+  if(user_edit_regex.exec(current_path) || profile_edit_regex.exec(current_path)){
     let user_forms = document.getElementsByClassName('needs-validation');
 
     validation = Array.prototype.filter.call(user_forms, (form) => {
+      let isValid = false;
       form.addEventListener('submit', function(event) {
         event.preventDefault();
         event.stopPropagation();
-        if (form.checkValidity() === true) {
+        isValid = form.checkValidity();
+        if (isValid === true) {
           form.submit()
         }else{
-          form.classList.add('was-validated');          
+          form.classList.add('was-validated');
         }
-      }, { catpure: false, once: true });
+      }, { catpure: true, once: isValid });
     });
   }
 })

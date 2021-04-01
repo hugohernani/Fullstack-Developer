@@ -17,8 +17,15 @@
         <div class="flash-container">
           <%= render 'flash_messages'%>
         </div>
+        <div class='user-nav-container float-right'>
+          <% if user_signed_in? %>
+            <%= link_to logout_path, method: :delete, id: dom_id(current_user, :logout), class: "btn btn-info btn-lg mb-2" do %>
+              <span><%= t('sidebar.logout') %></span>
+            <% end %>
+          <% end %>
+        </div>
         <%= yield %>
-      </main>      
+      </main>
     </div>
   </body>
 </html>
