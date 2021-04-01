@@ -5,8 +5,9 @@ module ApplicationHelper
 
   def bootstrap_class(alert_type)
     {
-      
-    }
+      'alert': 'danger',
+      'notice': 'info'
+    }.with_indifferent_access.fetch(alert_type, alert_type)
   end
 
   def storage_presenter(storage_model)

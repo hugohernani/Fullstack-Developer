@@ -1,0 +1,42 @@
+<div class='container'>
+  <%= render 'devise/shared/welcome_message' %>
+  <div class="card">
+    <div class="card-header text-center">
+      <%= t('devise.sessions.new.sign_in') %>
+    </div>
+    <div class="card-body">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-horizontal needs-validation", novalidate: true }) do |f| %>
+        <div class='field'>
+          <div class='form-group'>
+            <%= f.label :email %>
+            <%= f.email_field :email, class: 'form-control', placeholder: t('activerecord.attributes.user.email'), required: true %>
+          </div>
+        </div>
+        <div class='field'>
+          <div class='form-group'>
+            <%= f.label :password %>
+            <%= f.password_field :password, class: 'form-control', placeholder: t('activerecord.attributes.user.password'), required: true, pattern: User::PASSWORD_REQUIRED_PATTERN %>
+          </div>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <div class='form-check'>
+              <%= f.check_box :remember_me, class: 'form-check-input' %>
+              <%= f.label :remember_me, class: 'form-check-label' %>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="actions">
+          <%= f.submit t('devise.sessions.new.sign_in'), class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class='card-footer text-right'>
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+
+</div>

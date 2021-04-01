@@ -1,3 +1,8 @@
 .cleared{
   clear: both;
 }
+
+.user-nav-container{
+  position: relative;
+  z-index: $zindex-sticky;
+}
