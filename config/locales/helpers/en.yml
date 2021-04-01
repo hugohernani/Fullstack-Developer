@@ -1,5 +1,6 @@
 en:
   helpers:
+    exclusive_or: or
     buttons:
       save: Save
     links:

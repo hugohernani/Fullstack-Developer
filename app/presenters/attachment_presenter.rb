@@ -10,6 +10,14 @@ class AttachmentPresenter < BasePresenter
 
   protected
 
+  def default_image_placeholder(container_class)
+    <<~HTML
+      <div class="#{container_class}">
+        #{view_context.image_tag placeholder_image_url, loading: 'lazy'}
+      </div>
+    HTML
+  end
+
   def renderable?
     object.attached?
   end
@@ -21,4 +29,9 @@ class AttachmentPresenter < BasePresenter
   private
 
   attr_accessor :view_context
+
+  def placeholder_image_url
+    placeholder_text = 'Add an image'
+    "https://via.placeholder.com/300/FFFFFF/0000FF?text=#{placeholder_text}"
+  end
 end

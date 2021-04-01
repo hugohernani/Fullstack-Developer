@@ -20,7 +20,7 @@ module BreadcrumbsCollectable
     @breadcrumbs_collection = BreadcrumbsPresenter.new(
       {
         root_title: root_title,
-        root_path: "/#{root_path}"
+        root_path: root_path
       },
       view_context: context
     )

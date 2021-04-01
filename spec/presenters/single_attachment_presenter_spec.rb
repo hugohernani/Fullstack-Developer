@@ -21,10 +21,10 @@ describe SingleAttachmentPresenter do
     end
 
     it 'delegates resize parameter to storage_model representation method' do
-      resize_limit = [385, 230]
-      presenter.render(resize: resize_limit)
+      resize_limit = [600, 400]
+      presenter.render(resize_and_pad: resize_limit)
 
-      expect(storage_model).to have_received(:representation).with(resize_to_limit: resize_limit)
+      expect(storage_model).to have_received(:representation).with(resize_and_pad: resize_limit, gravity: 'north')
     end
 
     it 'returns a html content' do
