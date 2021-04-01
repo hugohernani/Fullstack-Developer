@@ -27,6 +27,10 @@ class UserPolicy < ApplicationPolicy
     index?
   end
 
+  def can_toggle?
+    new?
+  end
+
   class Scope < ApplicationPolicy::Scope
     def resolve
       return scope.all if user.admin?

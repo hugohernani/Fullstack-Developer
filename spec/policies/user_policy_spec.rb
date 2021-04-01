@@ -6,7 +6,7 @@ RSpec.describe UserPolicy, type: :policy do
   let(:member) { instance_double('User', admin?: false) }
   let(:admin) { instance_double('User', admin?: true) }
 
-  permissions :index?, :new?, :edit?, :show?, :create?, :update?, :destroy? do
+  permissions :index?, :new?, :edit?, :show?, :create?, :update?, :destroy?, :can_toggle? do
     it { is_expected.to permit(admin) }
     it { is_expected.not_to permit(member) }
   end

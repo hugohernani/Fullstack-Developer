@@ -8,6 +8,8 @@ class UsersChannel < ApplicationCable::Channel
   end
 
   def toggle_user_role(payload)
+    return unless UserPolicy.new(current_user).can_toggle?
+
     user = User.find(payload['user_id'])
     user.toggle_role
 
