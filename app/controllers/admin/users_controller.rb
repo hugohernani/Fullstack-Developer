@@ -34,7 +34,7 @@ module Admin
         if user.update(user_params)
           format.html{ redirect_to(admin_user_path(user), notice: t('.success')) }
         else
-          format.html{ render :new, status: :unprocessable_entity }
+          format.html{ render :edit, status: :unprocessable_entity }
         end
       end
     end
