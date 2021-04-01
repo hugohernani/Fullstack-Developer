@@ -3,22 +3,27 @@ module Admin
     define_action_breadcrumb_for('Users', '/admin/users')
 
     def index
+      authorize User
       @users = User.all
     end
 
     def new
+      authorize User
       @user = User.new
     end
 
     def edit
+      authorize user
       user
     end
 
     def show
+      authorize user
       user
     end
 
     def create
+      authorize User
       @user = User.new(create_user_params)
       respond_to do |format|
         if @user.save
@@ -30,6 +35,7 @@ module Admin
     end
 
     def update
+      authorize user
       respond_to do |format|
         if user.update(user_params)
           format.html{ redirect_to(admin_user_path(user), success: t('.success')) }
@@ -40,6 +46,7 @@ module Admin
     end
 
     def destroy
+      authorize User
       @user = User.destroy(params[:id])
       redirect_to admin_users_path, success: t('.success')
     end
