@@ -22,7 +22,7 @@ module Admin
       @user = User.new(create_user_params)
       respond_to do |format|
         if @user.save
-          format.html{ redirect_to(admin_users_path, notice: t('.success')) }
+          format.html{ redirect_to(admin_users_path, success: t('.success')) }
         else
           format.html{ render :new, status: :unprocessable_entity }
         end
@@ -32,7 +32,7 @@ module Admin
     def update
       respond_to do |format|
         if user.update(user_params)
-          format.html{ redirect_to(admin_user_path(user), notice: t('.success')) }
+          format.html{ redirect_to(admin_user_path(user), success: t('.success')) }
         else
           format.html{ render :edit, status: :unprocessable_entity }
         end
@@ -41,7 +41,7 @@ module Admin
 
     def destroy
       @user = User.destroy(params[:id])
-      redirect_to admin_users_path, notice: t('.success')
+      redirect_to admin_users_path, success: t('.success')
     end
 
     private

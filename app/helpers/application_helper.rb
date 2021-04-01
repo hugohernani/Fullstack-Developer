@@ -3,6 +3,12 @@ module ApplicationHelper
     I18n.t(locale_identifier, scope: %i[activerecord attributes]).titleize
   end
 
+  def bootstrap_class(alert_type)
+    {
+      
+    }
+  end
+
   def storage_presenter(storage_model)
     FactoryStoragePresenter.for(storage_model, view_context: self)
   end
