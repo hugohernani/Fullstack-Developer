@@ -1,13 +1,17 @@
-<div class='page-header'>
-  <h1 class="text-center"><%= t('.title') %></h1>
-</div>
+<div class='jumbotron jumbotron-fluid'>
+  <div class='container'>
+    <div class='actions w-100 d-flex mb-3'>
+      <%= link_to t('.new'), new_admin_user_path, class: 'btn btn-primary btn-sm-lg btn-info ml-auto' %>
+    </div>
 
-<div class='row'>
-  <% @users.each_slice(2) do |user_slice| %>
-    <% user_slice.each do |user| %>
-      <div class='col-sm-6'>
-        <%= render user %>
+    <% @users.each_slice(2) do |user_slice| %>
+      <div class='row mb-md-3'>
+        <% user_slice.each do |user| %>
+          <div class='col-sm-6 mb-sm-3'>
+            <%= render user %>
+          </div>
+        <% end %>
       </div>
     <% end %>
-  <% end %>
+  </div>
 </div>

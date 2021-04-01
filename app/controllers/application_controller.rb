@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include BreadcrumbsCollectable
   protect_from_forgery with: :exception
 
   protected

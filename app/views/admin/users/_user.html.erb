@@ -1,7 +1,12 @@
-<div class="card user-card mx-auto border-info text-center">
-  <img class="card-img-top" src="https://cdn.pixabay.com/photo/2021/03/18/19/56/keyboard-6105750_960_720.jpg" alt="Keyboard">
-  <div class="card-body">
+<div class="card mx-auto border-info text-center">
+  <div class='card-header'>
     <h5 class="card-title"><%= user.full_name %></h5>
+  </div>
+  <div class="card-body">
+    <%= storage_presenter(user.avatar_image).render(resize_and_pad: [600, 400], container_class: 'card-img-top') %>
+  </div>
+
+  <div class='card-footer'>
     <%= link_to t('helpers.links.show'), admin_user_path(user), id: dom_id(user), class: "card-link btn btn-primary" %>
     <%= link_to t('helpers.links.edit'), edit_admin_user_path(user), id: dom_id(user, :edit), class: "card-link btn btn-info" %>
     <%= link_to t('helpers.links.delete'), admin_user_path(user), method: :delete, id: dom_id(user, :delete),

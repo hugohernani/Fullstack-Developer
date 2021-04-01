@@ -1,5 +1,6 @@
 en:
   helpers:
+    exclusive_or: or
     buttons:
       save: Save
     links:
@@ -8,3 +9,6 @@ en:
       edit: Edit
       back: Back
       delete: Delete
+    validation:
+      valid: Valid input
+      invalid_required: This field is required

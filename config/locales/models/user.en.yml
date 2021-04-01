@@ -4,7 +4,9 @@ en:
       user: User
     attributes:
       user:
+        full_name: Full Name
         email: Email
+        password: Password
         role: Role
         created_at: Created At
         updated_at: Updated At

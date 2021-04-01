@@ -35,6 +35,16 @@ RSpec.describe 'Profiles' do
           expect(response).to redirect_to(admin_profile_url)
         end
       end
+
+      context 'with invalid parameters' do
+        let(:new_attributes) { attributes_for(:user, full_name: nil) }
+
+        it 'does not update the requested user' do
+          patch admin_profile_url, params: { user: new_attributes }
+          @user.reload
+          expect(@user.full_name).not_to eq(new_attributes[:full_name])
+        end
+      end
     end
   end
 

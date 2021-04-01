@@ -1,0 +1,12 @@
+<div class='col-md-4 mb-md-2'>
+  <div class="card text-center">
+    <div class="dropzone dropzone-default dz-clickable d-flex justify-content-center" data-controller="dropzone" data-dropzone-max-file-size="2" data-dropzone-max-files="1">
+    <%= f.file_field :avatar_image, direct_upload: true, data: { 'dropzone-target': 'input' } %>
+    <div class="dropzone-msg dz-message needsclick text-gray-600">
+      <h3 class="dropzone-msg-title"><%= t('.dropzone_upload_title') %></h3>
+      <span class="dropzone-msg-desc text-sm"><%= t('.dropzone_upload_restrictions') %></span>
+      </div>
+    </div>
+    <%= storage_presenter(f.object.avatar_image).render(resize: [385, 230]) %>
+  </div>
+</div>

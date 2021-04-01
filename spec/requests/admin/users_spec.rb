@@ -32,15 +32,54 @@ RSpec.describe 'Admin::Users' do
     context 'with valid parameters' do
       let(:new_attributes) { attributes_for(:user) }
 
-      it 'updates the requested profile' do
+      it 'updates the requested user' do
         patch admin_user_url(user), params: { user: new_attributes }
         user.reload
         expect(user.full_name).to eq new_attributes[:full_name]
       end
 
-      it 'redirects to the profile' do
+      it 'redirects to the user' do
         patch admin_user_url(user), params: { user: new_attributes }
         expect(response).to redirect_to(admin_user_url(user))
+      end
+    end
+
+    context 'with invalid parameters' do
+      let(:new_attributes) { attributes_for(:user, full_name: nil) }
+
+      it 'does not update the requested user' do
+        patch admin_user_url(user), params: { user: new_attributes }
+        user.reload
+        expect(user.full_name).not_to eq(new_attributes[:full_name])
+      end
+    end
+  end
+
+  describe 'POST /create' do
+    context 'with valid parameters' do
+      let(:new_attributes) { attributes_for(:user) }
+
+      it 'updates the requested user' do
+        post admin_users_url, params: { user: new_attributes }
+        user = User.last
+        user.reload
+        expect(user.full_name).to eq new_attributes[:full_name]
+        expect(user.role).to eq new_attributes[:role].to_s
+      end
+
+      it 'redirects to the users list' do
+        post admin_users_url, params: { user: new_attributes }
+        expect(response).to redirect_to(admin_users_url)
+      end
+    end
+
+    context 'with invalid parameters' do
+      let(:new_attributes) { attributes_for(:user, email: nil) }
+
+      it 'does not create an user' do
+        expect do
+          post admin_users_url, params: { user: new_attributes }
+        end.not_to change(User, :count)
       end
     end
   end

@@ -2,10 +2,7 @@
   <div class='row justify-content-md-center'>
     <div class='col-md-4 mb-md-2'>
       <div class="card text-center">
-        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2021/03/18/19/56/keyboard-6105750_960_720.jpg" alt="Keyboard">
-        <%= link_to '', class: 'btn btn-primary change-image-btn' do %>
-          <span>Change image</span>
-        <% end %>
+        <%= storage_presenter(@user.avatar_image).render(resize_and_pad: [600, 400], container_class: 'card-img-top') %>
       </div>
     </div>
 

@@ -1,22 +1,25 @@
-<%= render 'layouts/errors', resource: @user %>
-
-<div class="form-group row">
-  <%= f.label :full_name, class: 'col-sm-1 control-label' %>
-  <div class="col-sm-7">
-    <%= f.text_field :full_name, class: 'form-control' %>
+<div class='field row card-title'>
+  <div class='col-sm-3'>
+    <%= f.label :full_name %>
+  </div>
+  <div class='col-sm-5 form-group'>
+    <%= f.text_field :full_name, class: 'form-control', placeholder: t('activerecord.attributes.user.full_name'), required: true %>
+    <div class='valid-tooltip form-validation-tooltip-placement'>
+      <%= t('helpers.validation.valid') %>
+    </div>
+    <div class='invalid-tooltip form-validation-tooltip-placement'>
+      <%= error_message_for(f.object, :full_name) || yay %>
+    </div>
   </div>
 </div>
-
-<div class="form-check row d-flex ml-3">
-  <%= f.label :role, 'Admin', class: 'col-sm-1 form-check-label' %>
-  <%= f.check_box :role, {class: 'form-check-input', checked: @user.admin?}, User.roles[:admin], User.roles[:member] %>
-</div>
-
-<div class="form-group row">
-  <div class="col-sm-8">
-    <div class='card-footer d-flex justify-content-md-center mx-md-auto mt-5 w-100'>
-      <%= f.submit t('helpers.buttons.save'), class: 'btn btn-primary' %>
-      <%= link_to t('helpers.links.back'), admin_users_path, class: 'btn btn-default' %>
+<div class='field row card-title'>
+  <div class='col-sm-3'>
+    <%= f.label :role, art('user.role'), class: 'form-check-label' %>
+  </div>
+  <div class='col-sm-5'>
+    <div class='custom-control custom-switch  role-switcher'>
+      <%= f.check_box "role", { class: "custom-control-input", checked: f.object.admin?, id: dom_id(f.object, 'switcher') }, :admin, :member %>
+      <%= label_tag dom_id(f.object, 'switcher'), f.object.role.titleize, class: 'custom-control-label' %>
     </div>
   </div>
 </div>
