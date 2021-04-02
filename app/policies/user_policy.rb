@@ -28,7 +28,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def can_toggle?
-    new?
+    new? && !himself?
   end
 
   class Scope < ApplicationPolicy::Scope
@@ -37,5 +37,11 @@ class UserPolicy < ApplicationPolicy
 
       scope.none
     end
+  end
+
+  private
+
+  def himself?
+    user.eql?(record)
   end
 end

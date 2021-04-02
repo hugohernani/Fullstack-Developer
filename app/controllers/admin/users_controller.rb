@@ -54,7 +54,7 @@ module Admin
     private
 
     def create_user_params
-      params.require(:user).permit(:email, :full_name, :avatar_image, :role, :password)
+      params.require(:user).permit(:email, :full_name, :avatar_image, :role, :password, :password_confirmation)
     end
 
     def user_params

@@ -1,4 +1,4 @@
-$(document).ready(() => {
+$(document).on('ready turbolinks:load', () => {
   let user_forms = document.getElementsByClassName('needs-validation');
 
   validation = Array.prototype.filter.call(user_forms, (form) => {

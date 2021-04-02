@@ -6,9 +6,24 @@ RSpec.describe UserPolicy, type: :policy do
   let(:member) { instance_double('User', admin?: false) }
   let(:admin) { instance_double('User', admin?: true) }
 
-  permissions :index?, :new?, :edit?, :show?, :create?, :update?, :destroy?, :can_toggle? do
+  permissions :index?, :new?, :edit?, :show?, :create?, :update?, :destroy? do
     it { is_expected.to permit(admin) }
     it { is_expected.not_to permit(member) }
+  end
+
+  permissions :can_toggle? do
+    let(:admin){ create(:user, :admin) }
+    let(:member){ create(:user, :member) }
+
+    context 'when user is not the same as record' do
+      it { is_expected.to permit(admin, member) }
+      it { is_expected.not_to permit(member, member) }
+    end
+
+    context 'when user is the same as record' do
+      it { is_expected.not_to permit(admin, admin) }
+      it { is_expected.not_to permit(member, member) }
+    end
   end
 
   permissions '.scope' do
