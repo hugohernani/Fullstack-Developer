@@ -8,7 +8,7 @@ class UserQuery
   end
 
   module Scopes
-    def grouped_by_role(role)
+    def total_users_grouped_by_role(role)
       where(User.arel_table[:role].eq(role)).count
     end
 

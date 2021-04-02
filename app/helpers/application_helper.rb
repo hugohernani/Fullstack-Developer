@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def active_path?(target_controller)
+    controller_name == target_controller ? 'active' : ''
+  end
+
   def art(locale_identifier)
     I18n.t(locale_identifier, scope: %i[activerecord attributes]).titleize
   end
@@ -25,6 +29,8 @@ module ApplicationHelper
     new_instance = model_klass.new
     !new_instance.valid? && error_for(new_instance, field)
   end
+
+  private
 
   def error_for(model, field)
     model.errors.messages_for(field).to_exclusive_sentence

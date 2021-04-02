@@ -13,13 +13,13 @@ describe UserQuery do
     @member.destroy
   end
 
-  describe '#grouped_by_role' do
+  describe '#total_users_grouped_by_role' do
     it 'returns amount of member users' do
-      expect(query.grouped_by_role(:member)).to eq(1)
+      expect(query.total_users_grouped_by_role(:member)).to eq(1)
     end
 
     it 'returns amount of admin users' do
-      expect(query.grouped_by_role(:admin)).to eq(1)
+      expect(query.total_users_grouped_by_role(:admin)).to eq(1)
     end
   end
 

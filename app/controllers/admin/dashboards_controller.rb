@@ -4,6 +4,7 @@ module Admin
 
     def index
       authorize :dashboard
+      @dashboard = UserQuery.new.search
     end
   end
 end
