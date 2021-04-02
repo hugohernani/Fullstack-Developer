@@ -19,9 +19,8 @@
           <div class='field row card-title'>
             <div class='col-sm-3'><%= art('user.role') %></div>
             <div class='col-sm-5'>
-              <div class='custom-control custom-switch role-switcher'>
-                <%= check_box "user", "role", { class: "custom-control-input", checked: @user.admin?, id: dom_id(@user, 'switcher') } %>
-                <%= label_tag dom_id(@user, 'switcher'), @user.role.titleize, class: 'custom-control-label' %>
+              <div class="custom-control custom-switch role-switcher" data-user-id="<%= @user.id %>">
+                <%= render 'user_role_switcher', user: @user %>
               </div>
             </div>
           </div>
