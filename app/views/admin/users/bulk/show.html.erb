@@ -1,0 +1,24 @@
+<div class="jumbotron">
+  <div class="card">
+    <div class="card-header text-center">
+      <%= human_modal_name(@bulk_upload) %>
+    </div>
+    <div class="card-body">
+      <div class='text-center'>
+        <h4><%= art('bulk_upload.file_name') %>: <%= @bulk_upload.file_name %></h4>
+
+        <div class="progress bulk-progress" id="progress_<%= dom_id(@bulk_upload) %>">
+          <%= render 'admin/users/bulk/progress_bar', bulk_upload: @bulk_upload %>
+        </div>
+        <p class="alert text-muted"><%= I18n.t('admin.shared.bulk_processing') %></p>
+      </div>
+      <div class='row'>
+        <div class='actions col-sm-12'>
+          <div class='card-footer text-center'>
+            <%= link_to t('helpers.links.back'), admin_users_path, class: 'card-link btn btn-secondary' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

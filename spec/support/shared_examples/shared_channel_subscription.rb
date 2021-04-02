@@ -8,10 +8,4 @@ RSpec.shared_examples 'allowed logged in connection' do
 
     expect(subscription).to be_confirmed
   end
-
-  it 'subscribes to a user stream' do
-    subscribe
-
-    expect(subscription).to have_stream_for(logged_in_user)
-  end
 end

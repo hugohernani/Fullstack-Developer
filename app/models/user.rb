@@ -5,15 +5,20 @@ class User < ApplicationRecord
          :rememberable, :validatable
 
   validates :full_name, :role, presence: true
+  validates :role, inclusion: { in: %w[member admin] }
   validates :email, format: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, on: :create
   validate :password_complexity, on: :create
 
   enum role: { member: 0, admin: 1 }
 
   ## Associations
+  has_many :bulk_uploads, class_name: 'BulkUpload',
+                          foreign_key: :uploader_id,
+                          inverse_of: :uploader,
+                          dependent: :destroy
   has_one_attached :avatar_image do |attachable|
     attachable.variant :thumb, resize: '100x100'
-    attachable.variant :medium, resize: '350x350'
+    attachable.variant :medium, resize: '600x400'
   end
 
   def to_s

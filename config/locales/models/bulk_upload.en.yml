@@ -1,0 +1,7 @@
+en:
+  activerecord:
+    models:
+      bulk_upload: Bulk Upload
+    attributes:
+      bulk_upload:
+        file_name: Filename
