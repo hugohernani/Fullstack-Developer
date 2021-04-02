@@ -4,10 +4,4 @@ class BasePresenter < SimpleDelegator
   def object
     __getobj__
   end
-
-  protected
-
-  def h
-    ApplicationController.helpers
-  end
 end

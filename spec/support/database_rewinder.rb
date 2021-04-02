@@ -4,6 +4,6 @@ RSpec.configure do |config|
   end
 
   config.after do
-    DatabaseRewinder.clean
+    DatabaseRewinder.clean_all
   end
 end

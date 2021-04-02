@@ -1,2 +1,2 @@
-CREATE USER hugohernani WITH PASSWORD 'hugohernani';
-ALTER USER hugohernani WITH SUPERUSER;
+CREATE USER umanni WITH PASSWORD 'umanni';
+ALTER USER umanni WITH SUPERUSER;
