@@ -1,0 +1,61 @@
+<div class='container'>
+  <%= render 'devise/shared/welcome_message' %>
+  <div class="card">
+    <div class="card-header text-center">
+      <%= t('devise.registrations.new.sign_up') %>
+    </div>
+    <div class="card-body">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-horizontal needs-validation", novalidate: true }) do |f| %>
+        <div class='field'>
+          <div class='form-group'>
+            <%= f.label :email %>
+            <%= f.email_field :email, class: 'form-control', placeholder: t('activerecord.attributes.user.email'), required: true %>
+            <div class='valid-tooltip form-validation-tooltip-placement'>
+              <%= t('helpers.validation.valid') %>
+            </div>
+            <div class='invalid-tooltip form-validation-tooltip-placement'>
+              <%= error_message_for(f.object, :email) %>
+            </div>
+          </div>
+        </div>
+        <div class='field'>
+          <div class='form-group'>
+            <%= f.label :password %>
+            <%= f.password_field :password, class: 'form-control', 'aria-describedby': 'passwordHelper', placeholder: t('activerecord.attributes.user.password'), required: true, pattern: User::PASSWORD_REQUIRED_PATTERN %>
+            <% if @minimum_password_length %>
+              <small id="passwordHelper" class="form-text text-muted"><%= t('devise.registrations.new.required_password_length') %></small>
+            <% end %>
+            <div class='valid-tooltip form-validation-tooltip-placement'>
+              <%= t('helpers.validation.valid') %>
+            </div>
+            <div class='invalid-tooltip form-validation-tooltip-placement'>
+              <%= error_message_for(f.object, :password) %>
+            </div>
+          </div>
+        </div>
+
+        <div class='field'>
+          <div class='form-group'>
+            <%= f.label :password_confirmation %>
+            <%= f.password_field :password_confirmation, class: 'form-control', placeholder: t('activerecord.attributes.user.password_confirmation'), required: true, pattern: User::PASSWORD_REQUIRED_PATTERN %>
+            <div class='valid-tooltip form-validation-tooltip-placement'>
+              <%= t('helpers.validation.valid') %>
+            </div>
+            <div class='invalid-tooltip form-validation-tooltip-placement'>
+              <%= error_message_for(f.object, :password_confirmation) %>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <%= f.submit t('devise.registrations.new.sign_up'), class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class='card-footer text-right'>
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+
+</div>

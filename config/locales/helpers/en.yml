@@ -1,0 +1,14 @@
+en:
+  helpers:
+    exclusive_or: or
+    buttons:
+      save: Save
+    links:
+      logout: Logout
+      show: Show
+      edit: Edit
+      back: Back
+      delete: Delete
+    validation:
+      valid: Valid input
+      invalid_required: This field is required

@@ -1,0 +1,7 @@
+en:
+  admin:
+    dashboards:
+      index:
+        users_count: Total of Users
+        members_count: Total of Members
+        admins_count: Total of Admins
