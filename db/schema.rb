@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_02_015532) do
+ActiveRecord::Schema.define(version: 2021_04_02_062313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2021_04_02_015532) do
     t.bigint "uploader_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "processed_value", default: 0
     t.index ["uploader_id"], name: "index_bulk_uploads_on_uploader_id"
   end
 
