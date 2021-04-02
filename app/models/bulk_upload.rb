@@ -3,4 +3,8 @@ class BulkUpload < ApplicationRecord
                         inverse_of: :bulk_uploads
 
   has_one_attached :file
+
+  def file_name
+    file.filename.to_s
+  end
 end

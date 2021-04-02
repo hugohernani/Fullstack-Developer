@@ -3,6 +3,10 @@ module ApplicationHelper
     I18n.t(locale_identifier, scope: %i[activerecord attributes]).titleize
   end
 
+  def human_modal_name(model)
+    model.class.model_name.human
+  end
+
   def bootstrap_class(alert_type)
     {
       'alert': 'danger',

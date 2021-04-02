@@ -1,0 +1,6 @@
+en:
+  admin:
+    users:
+      bulk_uploads:
+        create:
+          success: Upload was successfully done and it's being processed

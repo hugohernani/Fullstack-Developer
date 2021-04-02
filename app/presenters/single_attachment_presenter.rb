@@ -3,6 +3,7 @@ class SingleAttachmentPresenter < AttachmentPresenter
     resize_limit = opts.fetch(:resize_and_pad, [600, 400])
     container_css_class = opts.fetch(:container_class, container_name)
     return image_render(resize_limit, container_css_class).html_safe if renderable?
+
     default_image_placeholder(container_css_class).html_safe
   end
 

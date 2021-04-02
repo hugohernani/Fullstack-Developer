@@ -1,0 +1,27 @@
+<div class="jumbotron">
+  <%= form_for [:admin, :users, @bulk_upload], html: { class: "form-horizontal" }, multipart: true do |f| %>
+    <div class="card">
+      <div class="card-header text-center">
+        <%= human_modal_name(@bulk_upload) %>
+      </div>
+      <div class="card-body">
+        <div class="dropzone dropzone-default dz-clickable d-flex justify-content-center" data-controller="dropzone" data-dropzone-max-file-size="2" data-dropzone-max-files="1">
+        <%= f.file_field :file, direct_upload: true, data: { 'dropzone-target': 'input' } %>
+        <div class="dropzone-msg dz-message needsclick text-gray-600">
+          <h3 class="dropzone-msg-title"><%= t('shared.dropzone_upload_title') %></h3>
+          <span class="dropzone-msg-desc text-sm"><%= t('shared.dropzone_upload_restrictions', file_size: '2 MP', file_types: 'xlxs') %></span>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='actions col-sm-12'>
+            <div class='card-footer text-center'>
+              <%= f.submit t('helpers.buttons.save'), class: 'card-link btn btn-info' %>
+              <%= link_to t('helpers.links.back'), admin_users_path, class: 'card-link btn btn-secondary' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+</div>
