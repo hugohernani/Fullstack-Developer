@@ -20,11 +20,8 @@ class UserBulkProcessingObserver
   end
 
   def broadcast
-    BulkUploadsChannel.broadcast_to bulk_upload, progress_bar_template: progress_bar
-  end
-
-  def progress_bar
-    ApplicationController.renderer.render(partial: 'admin/users/bulk/progress_bar',
-                                          locals: { bulk_upload: bulk_upload })
+    BulkUploadsChannel.broadcast_to bulk_upload,
+                                    progress_value: bulk_upload.processed_value,
+                                    bulk_upload_id: bulk_upload.id
   end
 end

@@ -3,12 +3,11 @@ require 'rails_helper'
 describe UserBulkProcessingObserver do
   subject(:observer) { described_class.new(bulk_upload: bulk_upload, sheet_size: sheet_size) }
 
-  let(:bulk_upload){ instance_double('bulkUpload', update_column: nil) }
+  let(:bulk_upload){ instance_double('bulkUpload', update_column: nil, id: 42, processed_value: 50) }
   let(:sheet_size){ 50 }
   let(:uploads_channel_klass){ class_double('BulkUploadsChannel', broadcast_to: nil) }
 
   before do
-    allow(ApplicationController).to receive_message_chain(:renderer, :render).and_return(nil)
     stub_const('BulkUploadsChannel', uploads_channel_klass)
   end
 
@@ -19,14 +18,9 @@ describe UserBulkProcessingObserver do
     expect(bulk_upload).to have_received(:update_column).with(:processed_value, expected_result)
   end
 
-  it 'asks ApplicationController to render a partial' do
-    observer.update(10)
-    expect(ApplicationController).to have_received(:renderer)
-  end
-
   it 'broadcasts bulk_upload through BulkUploadsChannel' do
     observer.update(10)
-    broadcast_expectation = { progress_bar_template: a_value }
+    broadcast_expectation = { progress_value: a_value, bulk_upload_id: bulk_upload.id }
     expect(uploads_channel_klass).to have_received(:broadcast_to).with(bulk_upload, broadcast_expectation)
   end
 end

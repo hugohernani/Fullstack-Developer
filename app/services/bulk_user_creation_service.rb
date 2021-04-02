@@ -1,12 +1,13 @@
 class BulkUserCreationService
   include Observable
 
-  def initialize(bulk_upload:)
+  def initialize(bulk_upload)
     @sheet = open_sheet(bulk_upload.file)
     add_observer(UserBulkProcessingObserver.new(bulk_upload: bulk_upload, sheet_size: sheet_size))
   end
 
   def perform(offset: 1, max_rows: 10)
+    max_rows = update_max_rows(max_rows)
     sheet.each_row_streaming(pad_cells: true, offset: offset, max_rows: max_rows) do |row|
       create_user(row)
     end
@@ -18,6 +19,11 @@ class BulkUserCreationService
   private
 
   attr_accessor :sheet
+
+  def update_max_rows(max_rows)
+    remaining_diff = (sheet_size - max_rows).abs
+    remaining_diff < max_rows ? sheet_size : max_rows
+  end
 
   def create_user(row)
     mapped_values = row.map(&:value)

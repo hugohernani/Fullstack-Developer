@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe BulkUserCreationService do
-  subject(:service) { described_class.new(bulk_upload: bulk_upload) }
+  subject(:service) { described_class.new(bulk_upload) }
 
   let(:bulk_upload){ create(:bulk_upload) }
   let(:rows_amount){ 30 }
@@ -33,7 +33,7 @@ describe BulkUserCreationService do
     it 'calls perform recursivally' do
       max_rows = 10
       expect(sheet).to receive(:each_row_streaming).with(pad_cells: true, offset: a_value, max_rows: a_value)
-                                                   .exactly(rows_amount / max_rows).times
+                                                   .exactly((rows_amount / max_rows) - 1).times
 
       service.perform(offset: 1, max_rows: max_rows)
     end

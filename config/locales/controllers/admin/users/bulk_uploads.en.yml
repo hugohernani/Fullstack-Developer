@@ -1,6 +1,6 @@
 en:
   admin:
     users:
-      bulk_uploads:
+      bulk:
         create:
-          success: Upload was successfully done and it's being processed
+          success: Upload was successfully done and it's being processed in the background
