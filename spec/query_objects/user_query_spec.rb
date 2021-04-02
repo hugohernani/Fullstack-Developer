@@ -8,11 +8,6 @@ describe UserQuery do
     @member = create(:user, :member)
   end
 
-  after do
-    @admin.destroy
-    @member.destroy
-  end
-
   describe '#total_users_grouped_by_role' do
     it 'returns amount of member users' do
       expect(query.total_users_grouped_by_role(:member)).to eq(1)

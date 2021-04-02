@@ -4,8 +4,6 @@ class FactoryStoragePresenter
       case storage_model.class.name
       when /Attached::One/
         SingleAttachmentPresenter.new(storage_model, view_context: view_context)
-      when /Attached::Many/
-        MultipleAttachmentPresenter.new(storage_model, view_context: view_context)
       else
         raise UnknownStorageModelException, "Unknown #{storage_model.class.name} storage"
       end

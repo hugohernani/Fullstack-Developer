@@ -5,6 +5,13 @@ class BulkUpload < ApplicationRecord
   # Associations
   has_one_attached :file
 
+  validates :file,          attached: true,
+                            size: { less_than: 2.megabytes },
+                            content_type: [
+                              'application/vnd.ms-excel',
+                              'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                            ]
+
   def file_name
     file.filename.to_s
   end

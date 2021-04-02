@@ -14,6 +14,13 @@ RSpec.describe 'Admin::Users' do
     end
   end
 
+  describe 'GET /new' do
+    it 'renders a successful response' do
+      get new_admin_user_url(user)
+      expect(response).to be_successful
+    end
+  end
+
   describe 'GET /show' do
     it 'renders a successful response' do
       get admin_user_url(user)

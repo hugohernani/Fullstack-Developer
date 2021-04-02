@@ -19,7 +19,7 @@ describe BreadcrumbsCollectable, type: :controller do
       it 'initializes presenter collection with root breadcrumb' do
         @ctrl_context.add_root_breadcrumb(root_title, root_path)
         expected_result = BreadcrumbsPresenter.new(
-          { root_title: root_title, root_path: "/#{root_path}" }, view_context: @ctrl_context
+          { root_title: root_title, root_path: root_path }, view_context: @ctrl_context
         )
         expect(@ctrl_context.breadcrumbs_collection).to eq(expected_result)
       end
