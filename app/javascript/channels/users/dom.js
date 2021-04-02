@@ -1,7 +1,7 @@
 const dom = {}
 
 dom.onCardClick = (fn) => {
-  document.querySelectorAll('div.user-role-switcher').forEach((toggler_elem, i) => {
+  document.querySelectorAll('div.role-switcher').forEach((toggler_elem, i) => {
     toggler_elem.addEventListener('click', (event) => {
       event.preventDefault()
 
@@ -26,7 +26,7 @@ dom.toggleField = (user_id, is_admin) => {
 }
 
 dom.renderCardHtml = ({user_id, _is_admin, card_template}) => {
-  let userCard = document.querySelector(`div.user-role-switcher[data-user-id='${user_id}']`);
+  let userCard = document.querySelector(`div.role-switcher[data-user-id='${user_id}']`);
   if(userCard.dataset.trigger === "true"){ return }
   userCard.innerHTML = card_template;
 }
