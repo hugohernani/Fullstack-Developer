@@ -3,8 +3,8 @@ FactoryBot.define do
     full_name { Faker::Name.name }
     role { :member }
     email { Faker::Internet.email }
-    password { 'password' }
-    password_confirmation { 'password' }
+    password { 'P4$$word' }
+    password_confirmation { password }
 
     trait :admin do
       role { :admin }

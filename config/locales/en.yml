@@ -2,3 +2,5 @@ en:
   time:
     formats:
       last_timestamp: "Last Change: %d %b %H:%M"
+  base:
+    not_authorized: "You're not authorized to perform this action"

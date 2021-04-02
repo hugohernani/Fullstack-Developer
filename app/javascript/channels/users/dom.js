@@ -13,12 +13,19 @@ dom.onCardClick = (fn) => {
   });
 }
 
-dom.toggleField = (user_id) => {
+dom.toggleField = (user_id, is_admin) => {
   let cardSwitcher = document.querySelector(`input.custom-control-input#switcher_user_${user_id}`)
-  cardSwitcher.checked = !cardSwitcher.checked
+  let cardSwitcherLabel = document.querySelector(`label.custom-control-label[for='switcher_user_${user_id}']`)
+  if(is_admin === true){
+    cardSwitcher.checked = true;
+    cardSwitcherLabel.textContent = 'admin'
+  }else{
+    cardSwitcher.checked = false;
+    cardSwitcherLabel.textContent = 'member'
+  }
 }
 
-dom.renderCardHtml = ({user_id, card_template}) => {
+dom.renderCardHtml = ({user_id, _is_admin, card_template}) => {
   let userCard = document.querySelector(`div.user-role-switcher[data-user-id='${user_id}']`);
   if(userCard.dataset.trigger === "true"){ return }
   userCard.innerHTML = card_template;

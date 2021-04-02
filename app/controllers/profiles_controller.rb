@@ -6,14 +6,17 @@ class ProfilesController < ApplicationController
   add_breadcrumb('Profile', "/#{controller_path}")
 
   def show
+    authorize User, policy_class: ProfilePolicy
     decorated_user
   end
 
   def edit
+    authorize User, policy_class: ProfilePolicy
     decorated_user
   end
 
   def update
+    authorize User, policy_class: ProfilePolicy
     respond_to do |format|
       if user.update(profile_params)
         format.html { redirect_to decorated_user.return_link, notice: t('.success') }

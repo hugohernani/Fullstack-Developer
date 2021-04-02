@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   add_flash_types :success, :error
 
+  include Pundit
+  rescue_from Pundit::NotAuthorizedError, with: :account_not_authorized
+
   protected
 
   def after_sign_up_path_for(resource)
@@ -18,6 +21,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def account_not_authorized
+    redirect_to(request.referer || role_landing_page(current_user), error: t('base.not_authorized'))
+  end
 
   def role_landing_page(resource)
     RoleLandingService.perform(resource: resource, context: self)
