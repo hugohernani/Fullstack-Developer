@@ -1,0 +1,10 @@
+en:
+  admin:
+    users:
+      edit:
+        title: Update
+      new:
+        title: New
+      index:
+        title: Users
+        new: New User

@@ -1,0 +1,11 @@
+en:
+  sidebar:
+    dashboard: Dashboard
+    users: Users
+    profile: Profile
+    logout: Logout
+  breadcrumbs:
+    users: Users
+    show: Details
+    edit: Form
+    new: "New %{resource}"

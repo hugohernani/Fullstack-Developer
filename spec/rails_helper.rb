@@ -5,6 +5,8 @@ require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
+require 'active_storage_validations/matchers'
+require 'pundit/rspec'
 
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 
@@ -28,6 +30,9 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
 
+  config.include ActiveStorageValidations::Matchers, type: :model
   config.include FactoryBot::Syntax::Methods
+  config.include ActionCable::TestHelper
+  config.include Rails.application.routes.url_helpers, type: :presenter
   config.example_status_persistence_file_path = "#{::Rails.root}/status_persistence_file.txt"
 end

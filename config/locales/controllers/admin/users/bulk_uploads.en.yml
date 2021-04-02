@@ -1,0 +1,6 @@
+en:
+  admin:
+    users:
+      bulk:
+        create:
+          success: Upload was successfully done and it's being processed in the background

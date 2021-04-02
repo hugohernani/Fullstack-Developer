@@ -10,11 +10,16 @@ AllCops:
     - '**/templates/**/*'
     - '**/vendor/**/*'
     - '**/node_modules/**/*'
+    - '**/app/views/**/*'
     - '.pryrc'
   RSpec:
     Patterns:
     - '_spec.rb$'
 
+
+Style/StringLiterals:
+  Exclude:
+    - '**/db/migrate/*'
 
 Style/FrozenStringLiteralComment:
   Enabled: false
@@ -26,4 +31,23 @@ Rails/FilePath:
   Enabled: false
 
 Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Exclude:
+    - '**/db/migrate/*'
+
+RSpec/DescribedClass:
+  Enabled: false
+
+Layout/SpaceBeforeBlockBraces:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+RSpec/InstanceVariable:
   Enabled: false

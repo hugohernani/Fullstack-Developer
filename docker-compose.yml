@@ -1,0 +1,29 @@
+version: '3'
+services:
+  redis:
+    image: redis:5.0.7
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_USER: umanni
+      POSTGRES_PASSWORD: umanni
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  web:
+    build: .
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_USER: umanni
+      POSTGRES_PASSWORD: umanni
+      REDIS_URL: redis
+    volumes:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - redis

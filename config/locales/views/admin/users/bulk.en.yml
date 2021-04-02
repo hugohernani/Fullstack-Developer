@@ -1,0 +1,6 @@
+en:
+  admin:
+    users:
+      bulk:
+        new:
+          sheet_sample: Bulk User sample to be followed when uploading a 'xlsx' file

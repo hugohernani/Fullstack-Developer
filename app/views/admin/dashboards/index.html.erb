@@ -1,0 +1,26 @@
+<div class="card-deck">
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title">
+        <%= t('.users_count') %>
+        <span class="badge badge-primary"><%= @dashboard.total_users %></span>
+      </h3>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title">
+        <%= t('.admins_count') %>
+        <span class="badge badge-success"><%= @dashboard.total_users_grouped_by_role(:admin) %></span>
+      </h3>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title">
+        <%= t('.members_count') %>
+        <span class="badge badge-secondary"><%= @dashboard.total_users_grouped_by_role(:member) %></span>
+      </h3>
+    </div>
+  </div>
+</div>

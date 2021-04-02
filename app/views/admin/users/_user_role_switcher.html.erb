@@ -1,0 +1,4 @@
+<div class='switcher-field role-switcher'>
+  <%= check_box "user", "role", { class: "custom-control-input", checked: user.admin?, id: dom_id(user, 'switcher') } %>
+  <%= label_tag dom_id(user, 'switcher'), user.role, class: 'custom-control-label' %>
+</div>

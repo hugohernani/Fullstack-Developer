@@ -1,0 +1,20 @@
+<div class='jumbotron jumbotron-fluid'>
+  <div class='container'>
+    <div class='w-100 d-flex mb-3'>
+      <div class='actions ml-auto'>
+        <%= link_to t('.bulk'), new_admin_users_bulk_upload_path, class: 'btn btn-primary btn-sm-lg btn-primary'  %>
+        <%= link_to t('.new'), new_admin_user_path, class: 'btn btn-primary btn-sm-lg btn-info' %>
+      </div>
+    </div>
+
+    <% @users.each_slice(2) do |user_slice| %>
+      <div class='row mb-md-3'>
+        <% user_slice.each do |user| %>
+          <div class='col-sm-6 mb-sm-3'>
+            <%= render user %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
