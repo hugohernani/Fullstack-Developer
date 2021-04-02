@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :rememberable, :validatable
 
   validates :full_name, :role, presence: true
+  validates :role, inclusion: { in: %w[member admin] }
   validates :email, format: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, on: :create
   validate :password_complexity, on: :create
 
