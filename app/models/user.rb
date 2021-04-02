@@ -11,9 +11,13 @@ class User < ApplicationRecord
   enum role: { member: 0, admin: 1 }
 
   ## Associations
+  has_many :bulk_uploads, class_name: 'BulkUpload',
+                          foreign_key: :uploader_id,
+                          inverse_of: :uploader,
+                          dependent: :destroy
   has_one_attached :avatar_image do |attachable|
     attachable.variant :thumb, resize: '100x100'
-    attachable.variant :medium, resize: '350x350'
+    attachable.variant :medium, resize: '600x400'
   end
 
   def to_s

@@ -5,6 +5,10 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_presence_of(attr) }
   end
 
+  %i[bulk_uploads].each do |attr|
+    it { is_expected.to have_many(attr) }
+  end
+
   describe '#toggle_role' do
     context 'when user is an admin' do
       subject(:user) { create(:user, :admin) }
